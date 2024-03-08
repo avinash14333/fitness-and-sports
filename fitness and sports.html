@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DNS Filtering Service Dashboard</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    #statistics {
+        margin-top: 20px;
+        border: 1px solid #ccc;
+        padding: 20px;
+        background-color: #f9f9f9;
+    }
+</style>
+</head>
+<body>
+<h1>DNS Filtering Service Dashboard</h1>
+<div id="statistics"></div>
+<script>
+    const statisticsData = {
+        totalMaliciousDomains: 150,
+        topMaliciousDomains: [
+            { domain: 'malicious1.com', count: 50 },
+            { domain: 'malicious2.com', count: 30 },
+            { domain: 'malicious3.com', count: 20 },
+            { domain: 'malicious4.com', count: 15 },
+            { domain: 'malicious5.com', count: 10 }
+        ],
+        topSourceIPs: [
+            { ip: '192.168.1.100', count: 40 },
+            { ip: '192.168.1.101', count: 30 },
+            { ip: '192.168.1.102', count: 20 },
+            { ip: '192.168.1.103', count: 15 },
+            { ip: '192.168.1.104', count: 10 }
+        ]
+    };
+
+    function displayStatistics() {
+        const statisticsDiv = document.getElementById('statistics');
+        statisticsDiv.innerHTML = `
+            <h2>Statistics:</h2>
+            <p>Total Malicious Domains: ${statisticsData.totalMaliciousDomains}</p>
+            <h3>Top Malicious Domains:</h3>
+            <ul>
+                ${statisticsData.topMaliciousDomains.map(domain => `<li>${domain.domain} (${domain.count} occurrences)</li>`).join('')}
+            </ul>
+            <h3>Top Source IPs:</h3>
+            <ul>
+                ${statisticsData.topSourceIPs.map(ip => `<li>${ip.ip} (${ip.count} occurrences)</li>`).join('')}
+            </ul>
+        `;
+    }
+
+    displayStatistics();
+</script>
+</body>
+</html>
